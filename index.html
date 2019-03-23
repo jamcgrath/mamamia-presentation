@@ -103,7 +103,7 @@
             <img class="plain" src="./img/WordPress.png" alt="" />
           </div>
         </section>
-        <section>
+        <!-- <section>
           <h1>The Stack</h1>
           <ul>
             <li>Node</li>
@@ -113,9 +113,9 @@
             <li>CloudFlare CDN with Cloud Workers</li>
             <li>WordPress</li>
           </ul>
-        </section>
+        </section> -->
         <section>
-          <h1>Mamamia Websites</h1>
+          <h1>Mamamia Website(s)</h1>
           <ul>
             <li>Mamamia.com.au</li>
             <li>Custom Admin</li>
@@ -288,6 +288,20 @@
           <pre style="font-size: 1.25em">
             <code data-trim>
           <!--
+          const modifyHtml = html => {
+            // Remove every script tag from generated HTML
+            html = html.replace(
+              /<script\b[^<]*(?:(?!<\/script>) < [^<] *)*<\/script>/gi,
+              function (str) {
+                if (/application\/json/.test(str) ||
+                  /application\/ld\+json/.test(str)) {
+                    return str;
+                  }
+                  return "";
+                } );
+                html = cleanStyleTags(html);
+                html = html.replace("<html", "<html ⚡"); return html; };
+
           const cleanStyleTags = html => {
             html = html.replace(/<style data-vue-ssr/g, "<style amp-custom data-vue-ssr" );
             let styles=html.match( / <style amp-custom\b[^<]*(?:(?!<\/style>) <[^<]*)*<\/style>/gi );
@@ -303,20 +317,6 @@
             return html.replace("</head>",
               `\n<style amp-custom data-vue-ssr>${oneStyle}</style>\n` + "\n</head>");
           };
-
-          const modifyHtml = html => {
-          // Remove every script tag from generated HTML
-          html = html.replace(
-            /<script\b[^<]*(?:(?!<\/script>) < [^<] *)*<\/script>/gi,
-            function (str) {
-              if (/application\/json/.test(str) ||
-                /application\/ld\+json/.test(str)) {
-                  return str;
-                }
-                return "";
-              } );
-              html = cleanStyleTags(html);
-              html = html.replace("<html", "<html ⚡"); return html; };
         -->
             </code>
           </pre>
