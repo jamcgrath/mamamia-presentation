@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>How We Built Mamamia</title>
+
+    <link rel="stylesheet" href="css/reveal.css" />
+    <!-- <link rel="stylesheet" href="css/theme/night.css" /> -->
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 class="section-title">James McGrath</h1>
+          <h2 class="secondary-title fragment fade-in-then-out">
+            CSS Black Magic & General Web Curses
+          </h2>
+          <div class="fragment fade-in job-title">
+            <h2 class="secondary-title">Front End Engineer</h2>
+            <img class="plain" src="./img/MM-lock-up@3x.png" />
+          </div>
+        </section>
+        <section
+          class="flex flex-justify-center flex-align-center mamamia-about"
+        >
+          <img class="plain" src="./img/MM-lock-up@3x.png" />
+          <ul class="fragment fade-in">
+            <li>General Womens Interest website</li>
+            <li>Sydney, Australia</li>
+            <li>Medium Size Publisher</li>
+            <li>One of the first publishers to switch to PWA</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Site Metrics</h1>
+        </section>
+        <section>
+          <ul>
+            <li>500,000 views per Day</li>
+            <li>15 Million views per Month</li>
+          </ul>
+        </section>
+        <section>
+          <blockquote>
+            January 2019 Domestic audience of 3.1m on-site uniques and a 6.4m
+            off-site reach via ‘aggregated platform vendor analytics’ – a
+            combination of Facebook, Apple News and MSN.
+          </blockquote>
+          <p>
+            <a
+              href="https://mumbrella.com.au/mamamia-will-no-longer-use-nielsens-incomplete-digital-content-ratings-567881"
+              >Mamamia will no longer use Nielsen’s ‘materially incomplete’
+              Digital Content Ratings</a
+            ><br />
+            mumbrella.com
+          </p>
+        </section>
+        <section>
+          <h2>
+            Redesign November 2018
+          </h2>
+          <ul>
+            <li>viewability has increased 20% (60% to 80%)</li>
+            <li>Ad density per page increased from 1.7 to 2.5</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Dev Team</h1>
+          <ul>
+            <li>
+              Core team is 4 Developers
+            </li>
+            <li>Ad Tech & Designer</li>
+          </ul>
+        </section>
+        <section>
+          <h1>The Stack</h1>
+          <div class="grid">
+            <img class="plain" src="./img/cloudflare.png" alt="" />
+            <img class="plain" src="./img/firebase.png" alt="" />
+            <img class="plain" src="./img/node.png" alt="" />
+            <img class="plain" src="./img/nuxt.png" alt="" />
+            <img class="plain" src="./img/vue.png" alt="" />
+            <img class="plain" src="./img/WordPress.png" alt="" />
+          </div>
+        </section>
+        <section>
+          <h1>The Stack</h1>
+          <ul>
+            <li>Node</li>
+            <li>Vue</li>
+            <li>Nuxt</li>
+            <li>Firebase (Firestore, Cloud Functions & Hosting)</li>
+            <li>CloudFlare CDN with Cloud Workers</li>
+            <li>WordPress</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Mamamia Websites</h1>
+          <ul>
+            <li>Mamamia.com.au</li>
+            <li>Custom Admin</li>
+            <li>WordPress</li>
+          </ul>
+        </section>
+        <section>
+          <h1>WordPress</h1>
+          <ul>
+            <li>Article Creation</li>
+            <li>On Save or Edit a PHP hook sends the data to Firebase</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Custom Admin</h1>
+          <ul>
+            <li>Page builder</li>
+            <li>Will eventually replace WordPress</li>
+            <li>Reads and Writes to Firebase</li>
+            <li>Created with Vue</li>
+          </ul>
+        </section>
+        <section>
+          <h1>mamamia.com.au</h1>
+          <ul>
+            <li>Serverless</li>
+            <li>Nuxt SSR</li>
+            <li>Google AMP</li>
+          </ul>
+        </section>
+        <section>
+          <h2>What happens when you type in mamamia.com.au in the browser?</h2>
+          <ul class="no-disc">
+            <li class="fragment fade-in" data-fragment-index="1">
+              1. Type in address bar mamamamia.com.au
+            </li>
+            <li class="fragment fade-in" data-fragment-index="2">
+              2. ??????????
+            </li>
+            <li class="fragment fade-in" data-fragment-index="2">3. Profit</li>
+          </ul>
+        </section>
+        <section>
+          <h2>
+            Request data from Cloudflare & Firebase
+          </h2>
+
+          <div class="bg-white">
+            <img
+              class="plain"
+              data-fragment-index="3"
+              src="./img/serverless-javascript-running-on-edge-server.svg"
+              alt=""
+            />
+          </div>
+        </section>
+        <section>
+          <h2>
+            Service Workers
+          </h2>
+          <ul>
+            <li>
+              Scripts that browsers download and run to create customized
+              experiences
+            </li>
+            <li>
+              Make push notifications, background syncing, and offline
+              functionality possible
+            </li>
+            <li>Can intercept, modify, and respond to HTTP requests</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Service Workers <span class="small">(Local)</span> / Cloud Workers <span class="small">(CDN)</span></h2>
+          <div>
+            <div class="bg-white">
+              <img
+                src="./img/service-worker-responds-http-request.svg"
+                alt=""
+                class="plain"
+              />
+            </div>
+            <br>
+            <div class="bg-white">
+            <img
+              src="./img/service-worker-modifies-http-request-response.svg"
+              alt=""
+              class="plain"
+            />
+          </div>
+        </section>
+        <section>
+          <h2>Inject Webfonts via CloudWorker</h2>
+          <ul>
+            <li>Loading webfonts = slow</li>
+            <li>CDN Cloud Workers optimize the delivery</li>
+            <li>Rewrite @fontface <code>font-display: swap;</code></li>
+          </ul>
+        </section>
+        <section>
+            <h2>The NUXT Stuff</h2>
+            <ul class="fragment fade-in">
+              <li>Does the SSR</li>
+              <li>Chooses which head and body via build hook</li>
+              <li>Crazy Regex Action</li>
+              <li>Optimizations (minify css, js, etc)</li>
+            </ul>
+        </section>
+        <section>
+          <h2>Which Head & Body</h2>
+          <ul>
+            <li>WEB = Serve ad code, analytics, third party js, etc</li>
+            <li>AMP = web components, amp boilerplate, amp ads </li>
+          </ul>
+        </section>
+        <section>
+          <h1>Nuxt Build Hook</h1>
+          <pre>
+            <code data-trim>
+              hooks: {
+                // This hook is called before rendering the html to the browser
+                "render:route": (url, page, { req, res }) => {
+                  if (
+                  url.endsWith("/amp/") ||
+                  url.endsWith("/amp") ||
+                  url.startsWith("/amp/")
+                  ) {
+                    page.html = modifyHtml(page.html);
+                    page.html = replaceMMTags(page.html, "amp");
+                  } else {
+                    page.html = replaceMMTags(page.html, "web");
+                  }
+                }
+              },
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>Web Head & Body</h2>
+          <pre>
+            <code data-trim>
+              const ampHead = fs.readFileSync("ampHead.html", "utf8");
+              const ampBody = fs.readFileSync("ampBody.html", "utf8");
+              const webHead = fs.readFileSync("webHead.html", "utf8");
+              const webBody = fs.readFileSync("webBody.html", "utf8");
+
+              const replaceMMTags = (html, version) => {
+              if (version == "amp") {
+              html = html.replace("{MMHEAD}", ampHead);
+              html = html.replace("{MMBODY}", ampBody);
+              } else if (version == "web") {
+              html = html.replace("{MMHEAD}", webHead);
+              html = html.replace("{MMBODY}", webBody);
+              }
+              return html;
+              };
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h1>Modify HTML For Amp</h1>
+          <ul>
+            <li>Remove all script tags</li>
+            <li>Combine all css in to one style tag</li>
+          </ul>
+        </section>
+
+        <section style="flex">
+          <h2>Modify HTML</h2>
+          <pre style="font-size: 1.25em">
+            <code data-trim>
+          <!--
+          const cleanStyleTags = html => {
+            html = html.replace(/<style data-vue-ssr/g, "<style amp-custom data-vue-ssr" );
+            let styles=html.match( / <style amp-custom\b[^<]*(?:(?!<\/style>) <[^<]*)*<\/style>/gi );
+            html=html.replace( / <style amp-custom\b[^<]*(?:(?!<\/style>) <[^<]*)*<\/style>/gi, "" );
+            let oneStyle="" ; if (styles) {
+              for (let i=0; i < styles.length; i++) {
+                styles[i]=styles[i].replace(/ <style amp-custom .*>/gi,"");
+                styles[i]=styles[i].replace(/<\/style>/gi,"");
+                styles[i]=styles[i].replace(/ !important/gi,"");
+                oneStyle+=styles[i]+"\n";
+              }
+            }
+            return html.replace("</head>",
+              `\n<style amp-custom data-vue-ssr>${oneStyle}</style>\n` + "\n</head>");
+          };
+
+          const modifyHtml = html => {
+          // Remove every script tag from generated HTML
+          html = html.replace(
+            /<script\b[^<]*(?:(?!<\/script>) < [^<] *)*<\/script>/gi,
+            function (str) {
+              if (/application\/json/.test(str) ||
+                /application\/ld\+json/.test(str)) {
+                  return str;
+                }
+                return "";
+              } );
+              html = cleanStyleTags(html);
+              html = html.replace("<html", "<html ⚡"); return html; };
+        -->
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>APP HTML</h2>
+          <pre>
+            <code data-trim>
+              <!--
+              <html {{ html_attrs }}>
+                <head>
+                  { MMHEAD }
+                  {{ HEAD }}
+                </head>
+                <body
+                  {{ body_attrs }}
+                  style="height:auto;overflow-x:hidden"
+                >
+                  { MMBODY }
+                  {{ APP }}
+                </body>
+              </html>
+            -->
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h1>Nuxt Templates</h1>
+          <ul>
+            <li>Majority of pages loaded via the widget loader component</li>
+            <li>Pick layout based on route</li>
+            <li>If AMP, load AMP specific component or AMP web component</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Widget Loader</h1>
+            <pre>
+              <code data-trim>
+              <!--
+              <template>
+                <div>
+                  <widget-loader
+                    v-if="!ampRoute"
+                    :widget-data="collectionData.widgetData"
+                  ></widget-loader>
+
+                  <widget-loader-amp
+                    v-else-if="ampRoute"
+                    :widget-data="collectionData.widgetData"
+                  ></widget-loader-amp>
+                </div>
+              </template>
+              -->
+              </code>
+            </pre>
+        </section>
+        <section>
+          <h1>AMP Templates</h1>
+          <ul>
+            <li>Most AMP pages reference regular page</li>
+            <li>Certain pages & components were rewritten specifically for AMP</li>
+          </ul>
+          <pre>
+            <code data-trim>
+            <!--
+            <script>
+              import events from '~/pages/events/';
+              export default events;
+            </script>
+            -->
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>Template with AMP</h2>
+          <pre>
+            <code data-trim>
+            <!--
+            //Component with AMP Ability
+            <article-author
+              :author-data="authorData"
+              data-amp="true"
+            ></article-author>
+
+            //In Component or Page
+            <img v-if="!dataAmp" :src="image">
+            <amp-img
+              v-else-if="dataAmp"
+              :src="image"
+              width="182"
+              height="182"
+              layout="responsive"
+              ></amp-img>
+            -->
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h1>fin</h1>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/notes/notes.js", async: true },
+          {
+            src: "plugin/highlight/highlight.js",
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>
